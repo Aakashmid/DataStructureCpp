@@ -228,6 +228,5 @@ int main()
     // d.reverse();
     d.del(8);
     d.display();
-    // Write menu driven program for this code
     return 0;
 }

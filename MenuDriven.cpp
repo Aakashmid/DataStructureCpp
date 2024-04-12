@@ -4,17 +4,16 @@ using namespace std;
 int main()
 {
     int choice;
-    cout << "1 - Linear search in array \n";
-    cout << "2 - Binary  search in array \n";
-    cout << "3 - Linear search in array \n";
-    cout << "4 - Linear search in array \n";
+    cout << "1 - Linear search in array  iterative \n";
+    cout << "2 - Binary  search in array iterative  \n";
+    cout << "3 - Linear search in array recursive\n";
+    cout << "4 - Binary search in array recursive \n";
 
     cout << "Enter your choice : ";
     cin >> choice;
     switch (choice)
     {
     case 1:{
-
         int n;
         cout << "Enter size of array : ";
         cin >> n;

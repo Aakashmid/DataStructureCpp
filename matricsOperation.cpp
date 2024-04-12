@@ -6,7 +6,7 @@ int main()
     do
     {
         cout << "Choose operations you want to do  :>" << endl;
-        cout << "1 for create a matrix , 2 for adding two matrices \n3 for multiplying two matrices \n";
+        cout << "1 Transpose of given matrix, 2 for adding two matrices \n3 for multiplying two matrices \n";
         int choice;
         cout << "Choose your choice : ";
         cin >> choice;
@@ -18,7 +18,7 @@ int main()
             int row, col;
             cout << "Enter value for no. of  row :";
             cin >> row;
-            cout << "Enter value for no. of   column";
+            cout << "Enter value for no. of  column";
             cin >> col;
             int mat[row][col];
             for (int i = 0; i < row; i++)
@@ -31,28 +31,28 @@ int main()
             }
 
             // showing matrix
-            cout << "Created Matrix is -> \n";
-            cout << "{";
-            for (int i = 0; i < row; i++)
-            {
+            // cout << "Created Matrix is -> \n";
+            // cout << "{";
+            // for (int i = 0; i < row; i++)
+            // {
 
-                cout << "{";
-                for (int j = 0; j < col; j++)
-                {
-                    cout << mat[i][j];
-                    if (j < col - 1)
-                    {
-                        cout << ",";
-                    }
-                }
-                cout << "}";
-                if (i < row - 1)
-                {
-                    cout << ",";
-                }
-                cout << endl;
-            }
-            cout << "} \n";
+            //     cout << "{";
+            //     for (int j = 0; j < col; j++)
+            //     {
+            //         cout << mat[i][j];
+            //         if (j < col - 1)
+            //         {
+            //             cout << ",";
+            //         }
+            //     }
+            //     cout << "}";
+            //     if (i < row - 1)
+            //     {
+            //         cout << ",";
+            //     }
+            //     cout << endl;
+            // }
+            // cout << "} \n";
 
             break;
         }

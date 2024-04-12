@@ -42,13 +42,12 @@ void CountSort(int a[], int n)
             k = a[i];
         }
     }
-
     int c[k + 1] = {0}; // c is count Array //assigning every value of array to zero
     for (int i = 0; i < n; i++)
     {
         c[a[i]] += 1;
     }
-
+    
     for (int i = 1; i <= k; i++)
     {
         c[i] = c[i] + c[i - 1];
