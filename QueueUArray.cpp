@@ -19,6 +19,9 @@ public:
     void enq(int x);
     void deq();
     void display();
+    ~Queue(){
+        delete []Arr;
+    }
 };
 bool Queue::isFull()
 {
@@ -30,7 +33,7 @@ bool Queue::isFull()
 }
 bool Queue::isEmp()
 {
-    if (rear==-1)
+    if (rear==-1 && front==-1)  //checking rear value
     {
         return true;
     }
@@ -46,7 +49,6 @@ void Queue::enq(int x){
         front++;
         Arr[++rear]=x;
     }
-    
     else
     {
         Arr[++rear]=x;
@@ -56,8 +58,9 @@ void Queue::deq(){
     if(isEmp()){
         cout<<"UnderFlow \n";
     }
-    else{
-        front++;
+    else if(rear==front){
+        cout<<"Deleted "<<Arr[front]<<endl;
+        front=rear=-1;
     }
 }
 void Queue::display(){
@@ -69,15 +72,36 @@ void Queue::display(){
         for(int i=front; i<=rear;i++){
             cout<<Arr[i]<<" ";
         }
+        cout<<endl;
     }   
 }
 int main()
 {
-    Queue q(5);
-    // q.enq(4);
-    // q.enq(3);
-    // q.enq(6);
-    // q.deq();
-    // q.display();
+    Queue q(7);
+    int choice;
+    do
+    {
+        cout<<"Choose operation you want to do \n";
+        cout<<"1 for enqueue \n";
+        cout<<"2 for dequeue \n";
+        cout<<"3 for display queue \n";
+        cout<<"Enter your choice : ";cin>>choice;
+        switch (choice)
+        {
+        case 1: // for enqueue
+            int val;
+            cout<<"Enter value for enqueue : ";
+            cin>>val; 
+            q.enq(val);
+            break;
+        case 2: //for dequeue
+            q.deq();
+            break;
+        case 3:
+            q.display();
+            break;
+        }
+        cout<<"\n";
+    } while(choice>=1 && choice<=3);
     return 0;
 }
