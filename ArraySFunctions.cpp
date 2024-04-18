@@ -1,7 +1,7 @@
 #include <iostream>
 using namespace std;
-// /*
-// code is incoplete
+
+//////////////////////////////////////////////////////////////////////////// code is incomplete
 
 // int Max(int arr[],size);
 // int Min(int arr[],size);
@@ -40,6 +40,7 @@ int RBinarySearch(int A[], int s, int l, int h, int key)
     return -1;
 }
 
+// Iterative linear search
 int ILinearSearch(int A[],int s,int key){
     for(int i=0;i<=s;i++){
         if (key==A[i])
@@ -47,6 +48,18 @@ int ILinearSearch(int A[],int s,int key){
     }
     return -1
 }
+
+//Recursive linear search
+int RLinearSearch(int a[],int first,int last,int key){
+    if (first>last)
+        return -1;
+    if (a[first]==key)
+        return key;
+    else
+        return RLinearSearch(a,++first,last,key);
+}
+
+
 /*void InsertionSort(int a[], int n)
 {
     int i, j, temp;
@@ -76,23 +89,34 @@ int ILinearSearch(int A[],int s,int key){
     // print sorted array
 }*/
 
-void reverseArray(int Array[], int size)
+//Method for Reverse an array 
+void Reverse(int Array[], int size)
 {
-    // make changes in original array
-    int ReverseArray[size];
-    for (int i = 0; i < size; i++)
+    int i,j,temp;
+    for (i=0, j=size-1; i<j ;j--,i++)
     {
-        ReverseArray[i] = Array[4 - i];
-    }
-    cout << "The Reverse array is \n";
-    for (int i = 0; i < size; i++)
-    {
-        cout << ReverseArray[i] << " ";
+        temp=A[i];
+        A[i]=A[j];
+        A[j]=temp;
     }
 }
 int main()
 {
+
+    // First Create an array
+    int size;
+    cout<<"Enter size of Array : ";
+    cin>>size;
+    int Array[size];
+    for (int i = 0; i < size; i++)
+    {
+        cout<<"Enter value of array element : ";
+        cin>>Array[i];
+    }
+    cout<<endl;
     int choice;
+    do
+    {
     cout << "1 - Linear search in array  iterative \n";
     cout << "2 - Binary  search in array iterative  \n";
     cout << "3 - Linear search in array recursive\n";
@@ -100,9 +124,27 @@ int main()
     cout << "5 - Find maximum value in array \n";
     cout << "6 - Find minimum value in array \n";
     cout << "7 - Find sum of  value in array \n";
-
     cout << "Enter your choice : ";
     cin >> choice;
-
+    switch (choice)
+    {
+    case 1:
+        break;
+    case 2:
+        break;
+    case 3:
+        break;
+    case 4:
+        break;
+    case 5:
+        break;
+    case 6:
+        break;
+    case 7:
+        break;
+    default:
+        break;
+    }
+    } while (0<choice<=8);
     return 0;
 }
