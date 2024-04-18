@@ -58,9 +58,15 @@ void Queue::deq(){
     if(isEmp()){
         cout<<"UnderFlow \n";
     }
-    else if(rear==front){
+    else {
+        if(rear==front){
         cout<<"Deleted "<<Arr[front]<<endl;
         front=rear=-1;
+        }
+        else{
+        cout<<"Deleted "<<Arr[front]<<endl;
+        front++;
+        }
     }
 }
 void Queue::display(){

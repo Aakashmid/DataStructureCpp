@@ -16,10 +16,19 @@ class Stack
 public:
     node *top;
     node *head;
-    Stack()
+    Stack() //constructor
     {
         top = 0;
         head = 0;
+    }
+    // destructor
+    ~Stack(){
+        node *p=head;
+        while(p!=0){
+            head=head->next;
+            delete p;
+            p=head;
+        }
     }
     void pop();
     void peek();
@@ -66,14 +75,14 @@ void Stack::pop()
     }
     else
     {
-        node *p=head;
-        while (p->next !=top)
+        node *p = head;
+        while (p->next != top)
         {
-            p=p->next;
+            p = p->next;
         }
-        node *temp=top;
-        p->next=0;
-        top=p;
+        node *temp = top;
+        p->next = 0;
+        top = p;
         delete temp;
     }
 }
@@ -105,11 +114,35 @@ void Stack::push(int x)
 int main()
 {
     Stack s1;
-    s1.push(4);
-    // s1.push(6);
-    // s1.push(8);
-    // s1.pop();
-    // s1.peek();
-    // s1.display();
+    int choice;
+    do
+    {
+        cout << "Choose operation you want to do \n";
+        cout << "1 for push in stack \n";
+        cout << "2 for pop from stack \n";
+        cout << "3 for peek  of stack \n";
+        cout << "4 for display stack's element \n";
+        cout << "Enter your choice : ";
+        cin >> choice;
+        switch (choice)
+        {
+        case 1: // for push  in stack
+            int val;
+            cout << "Enter value for push in stack : ";
+            cin >> val;
+            s1.push(val);
+            break;
+        case 2: // for pop from  stack 
+            s1.pop();
+            break;
+        case 3:
+            s1.peek();
+            break;
+        case 4:
+            s1.display();
+            break;
+        }
+        cout << "\n";
+    } while (choice >= 1 && choice <= 4);
     return 0;
 }
