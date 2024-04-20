@@ -3,11 +3,64 @@ using namespace std;
 
 //////////////////////////////////////////////////////////////////////////// code is incomplete
 
-// int Max(int arr[],size);
-// int Min(int arr[],size);
-// int Sum(int arr[],size);
+// For finding  maximum value in array using iterative method
+int MaxI(int arr[],int size)
+{
+    int max = arr[0];
+    for (int i = 1; i < size; i++)
+    {
+        if (arr[i] > max)
+        {
+            max = arr[i];
+        }
+    }
+    return max;
+}
 
-// Binary search iteratinve
+// For finding  maximum value in array using Recursive method
+int MaxR(int arr[],int size,int max=arr[0]){
+    if (size==1){
+        return max;
+    }
+    else{
+        if(arr[size-1]>max){
+            max=arr[size-1];
+            return max=MaxR(arr,size-1,max);
+        }
+    }
+    
+
+}
+
+// For finding  minimum value in array using iterative method
+int MinI(int arr[],int  size)
+{
+    int min = arr[0];
+    for (int i = 1; i < size; i++)
+    {
+        if (arr[i] < min)
+        {
+            min = arr[i];
+        }
+    }
+    return min;
+}
+// For finding  minimum value in array using Recursive method
+
+// For finding  sum of all values in array using iterative method
+int SumI(int arr[], int size)
+{
+    int sum = 0;
+    for (int i = 0; i < count; i++)
+    {
+        sum += arr[i];
+    }
+    return sum;
+}
+
+// For finding  sum of value in array using Recursive method
+
+// Binary search  using iteratinve
 int IBinarySearch(int A[], int s, int key)
 {
     int l = 0;
@@ -24,7 +77,7 @@ int IBinarySearch(int A[], int s, int key)
     }
     return -1;
 }
-
+// Binary search using recursive
 int RBinarySearch(int A[], int s, int l, int h, int key)
 {
     if (l <= h)
@@ -41,26 +94,28 @@ int RBinarySearch(int A[], int s, int l, int h, int key)
 }
 
 // Iterative linear search
-int ILinearSearch(int A[],int s,int key){
-    for(int i=0;i<=s;i++){
-        if (key==A[i])
+int ILinearSearch(int A[], int s, int key)
+{
+    for (int i = 0; i <= s; i++)
+    {
+        if (key == A[i])
             return i;
     }
     return -1
 }
 
-//Recursive linear search
-int RLinearSearch(int a[],int first,int last,int key){
-    if (first>last)
+// Recursive linear search
+int RLinearSearch(int a[], int first, int last, int key)
+{
+    if (first > last)
         return -1;
-    if (a[first]==key)
+    if (a[first] == key)
         return key;
     else
-        return RLinearSearch(a,++first,last,key);
+        return RLinearSearch(a, ++first, last, key);
 }
 
-
-/*void InsertionSort(int a[], int n)
+void InsertionSort(int a[], int n)
 {
     int i, j, temp;
     for (i = 1; i < n; i++)
@@ -78,73 +133,89 @@ int RLinearSearch(int a[],int first,int last,int key){
             }
         }
         a[j + 1] = temp;
-        cout<<"Array at "<<i<<"  pass -> ";
-        for (int i = 0; i < n; i++)
-        {
-            cout << a[i] << " ";
-        }
-        cout<<"\n";
     }
+    // Printing sorted array
+    cout << "Sorted Array is  : ";
+    for (int i = 0; i < n; i++)
+    {
+        cout << a[i] << "  ";
+    }
+    cout << "\n";
+}
 
-    // print sorted array
-}*/
-
-//Method for Reverse an array 
+// Method for Reverse an array
 void Reverse(int Array[], int size)
 {
-    int i,j,temp;
-    for (i=0, j=size-1; i<j ;j--,i++)
+    int i, j, temp;
+    for (i = 0, j = size - 1; i < j; j--, i++)
     {
-        temp=A[i];
-        A[i]=A[j];
-        A[j]=temp;
+        temp = A[i];
+        A[i] = A[j];
+        A[j] = temp;
     }
 }
 int main()
 {
 
     // First Create an array
-    int size;
-    cout<<"Enter size of Array : ";
-    cin>>size;
-    int Array[size];
-    for (int i = 0; i < size; i++)
+    int n;
+    cout << "Enter size of Array : ";
+    cin >> n;
+    int Array[n];
+    for (int i = 0; i < n; i++)
     {
-        cout<<"Enter value of array element : ";
-        cin>>Array[i];
+        cout << "Enter value of array element : ";
+        cin >> Array[i];
     }
-    cout<<endl;
+    cout << endl;
     int choice;
     do
     {
-    cout << "1 - Linear search in array  iterative \n";
-    cout << "2 - Binary  search in array iterative  \n";
-    cout << "3 - Linear search in array recursive\n";
-    cout << "4 - Binary search in array recursive \n";
-    cout << "5 - Find maximum value in array \n";
-    cout << "6 - Find minimum value in array \n";
-    cout << "7 - Find sum of  value in array \n";
-    cout << "Enter your choice : ";
-    cin >> choice;
-    switch (choice)
-    {
-    case 1:
-        break;
-    case 2:
-        break;
-    case 3:
-        break;
-    case 4:
-        break;
-    case 5:
-        break;
-    case 6:
-        break;
-    case 7:
-        break;
-    default:
-        break;
-    }
-    } while (0<choice<=8);
+        cout << "1 - Linear search in array  using iterative method \n";
+        cout << "2 - Linear  search in array using recursive method  \n";
+        cout << "3 - Binary  search in array using iterative method \n";
+        cout << "4 - Binary search in array  using recursive method \n";
+        cout << "5 - Find maximum value in array using iterative method \n";
+        cout << "6 - Find maximum value in array using recursive method \n";
+        cout << "7 - Find minimum value in array using iterative method \n";
+        cout << "8 - Find minimum value in array using recursive method \n";
+        cout << "9 - Find sum of  value in array using iterative method \n";
+        cout << "10 - Find sum of value in array using recursive method  \n";
+        cout << "11 - Sort array using Insertion  sort \n" ;
+        cout << "12 -  Reverse an array  \n" ;
+        cout << "Enter your choice : ";
+        cin >> choice;
+        switch (choice)
+        {
+        case 1:
+            break;
+        case 2:
+            break;
+        case 3:
+            break;
+        case 4:
+            break;
+        case 5:
+            cout<<"Maximum value in array : "<<MaxI(Array,n)<<" \n";
+            break;
+        case 6:
+            break;
+        case 7:
+            cout<<"Minimum value in array : "<<MinI(Array,n)<<" \n";
+            break;
+        case 8:
+            
+            break;
+        case 9:
+            cout<<"Sum of values in array : "<<SumI(Array,n)<<" \n";
+            break;
+        case 10:
+            break;
+        case 11:
+            break;
+        default:
+            break;
+        }
+    } while (0 < choice <= 8);
     return 0;
 }
