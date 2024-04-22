@@ -113,6 +113,7 @@ void Stack::push(int x)
 }
 int main()
 {
+    cout<<"Name - Aakash Kumar Jha \n";
     Stack s1;
     int choice;
     do

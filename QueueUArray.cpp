@@ -83,6 +83,7 @@ void Queue::display(){
 }
 int main()
 {
+    cout<<"Name - Aakash Kumar Jha \n";
     Queue q(7);
     int choice;
     do

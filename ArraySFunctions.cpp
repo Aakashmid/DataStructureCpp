@@ -18,19 +18,17 @@ int MaxI(int arr[],int size)
 }
 
 // For finding  maximum value in array using Recursive method
-int MaxR(int arr[],int size,int max=arr[0]){
-    if (size==1){
-        return max;
-    }
-    else{
-        if(arr[size-1]>max){
-            max=arr[size-1];
-            return max=MaxR(arr,size-1,max);
-        }
-    }
-    
-
-}
+// int MaxR(int arr[],int size,int max=arr[0]){
+//     if (size==1){
+//         return max;
+//     }
+//     else{
+//         if(arr[size-1]>max){
+//             max=arr[size-1];
+//             return max=MaxR(arr,size-1,max);
+//         }
+//     }
+// }
 
 // For finding  minimum value in array using iterative method
 int MinI(int arr[],int  size)
@@ -51,7 +49,7 @@ int MinI(int arr[],int  size)
 int SumI(int arr[], int size)
 {
     int sum = 0;
-    for (int i = 0; i < count; i++)
+    for (int i = 0; i < size; i++)
     {
         sum += arr[i];
     }
@@ -65,7 +63,7 @@ int IBinarySearch(int A[], int s, int key)
 {
     int l = 0;
     int h = s - 1;
-    int mid = {l + h} / 2;
+    int mid = (l + h)/ 2;
     while (l <= h)
     {
         if (key == A[mid])
@@ -82,7 +80,7 @@ int RBinarySearch(int A[], int s, int l, int h, int key)
 {
     if (l <= h)
     {
-        int mid = (l + h) / 2;
+        int mid = (l+h)/2;
         if (key == A[mid])
             return mid;
         else if (key <= A[mid])
@@ -101,7 +99,7 @@ int ILinearSearch(int A[], int s, int key)
         if (key == A[i])
             return i;
     }
-    return -1
+    return -1;
 }
 
 // Recursive linear search
@@ -144,7 +142,7 @@ void InsertionSort(int a[], int n)
 }
 
 // Method for Reverse an array
-void Reverse(int Array[], int size)
+void Reverse(int A[], int size)
 {
     int i, j, temp;
     for (i = 0, j = size - 1; i < j; j--, i++)
@@ -158,15 +156,16 @@ int main()
 {
 
     // First Create an array
-    int n;
-    cout << "Enter size of Array : ";
-    cin >> n;
-    int Array[n];
-    for (int i = 0; i < n; i++)
-    {
-        cout << "Enter value of array element : ";
-        cin >> Array[i];
-    }
+    cout<<"Create an Array -> \n";
+    int n=6;
+    // cout << "Enter size of Array : ";
+    // cin >> n;
+    int Array[6]=[1,2,5,3,9,6];
+    // for (int i = 0; i < n; i++)
+    // {
+    //     cout << "Enter value of array element : ";
+    //     cin >> Array[i];
+    // }
     cout << endl;
     int choice;
     do
@@ -183,6 +182,7 @@ int main()
         cout << "10 - Find sum of value in array using recursive method  \n";
         cout << "11 - Sort array using Insertion  sort \n" ;
         cout << "12 -  Reverse an array  \n" ;
+        cout<<"q for exit \n";
         cout << "Enter your choice : ";
         cin >> choice;
         switch (choice)
@@ -212,10 +212,15 @@ int main()
         case 10:
             break;
         case 11:
+            InsertionSort(Array,n);
+            break;
+        case 12:
+            Reverse(Array,n);
             break;
         default:
             break;
         }
-    } while (0 < choice <= 8);
+        cout<<"\n";
+    } while (0 < choice <= 11);
     return 0;
 }

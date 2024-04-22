@@ -85,6 +85,7 @@ int Stack::peek()
 }
 int main()
 {
+    cout<<"Name - Aakash Kumar Jha \n";
     Stack s1(5);
     int choice;
     do

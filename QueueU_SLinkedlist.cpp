@@ -98,6 +98,7 @@ void Queue::enq(int x)
 }
 int main()
 {
+    cout<<"Name - Aakash Kumar Jha \n";
     Queue q;
     int choice;
     do
