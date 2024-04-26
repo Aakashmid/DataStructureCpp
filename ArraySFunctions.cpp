@@ -108,7 +108,7 @@ int RLinearSearch(int a[], int first, int last, int key)
     if (first > last)
         return -1;
     if (a[first] == key)
-        return key;
+        return first;
     else
         return RLinearSearch(a, ++first, last, key);
 }
