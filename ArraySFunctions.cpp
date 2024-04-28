@@ -1,8 +1,6 @@
 #include <iostream>
 using namespace std;
 
-//////////////////////////////////////////////////////////////////////////// code is incomplete
-
 // For finding  maximum value in array using iterative method
 int MaxI(int arr[], int size)
 {
@@ -18,19 +16,19 @@ int MaxI(int arr[], int size)
 }
 
 // For finding  maximum value in array using Recursive method
-int MaxR(int arr[], int size, int i = 0, int max = 0)
+int MaxR(int arr[], int size, int max , int i = 0)
 {
-    if (i == size - 1)
+    if (i == size)
         return max;
     else
     {
         if (max < arr[i])
         {
             max = arr[i];
-            return MaxR(arr, ++i, size, max);
+            return MaxR(arr, size, max, ++i);
         }
         else
-            return MaxR(arr, ++i, size, max);
+            return MaxR(arr, size, max, ++i);
     }
 }
 
@@ -47,7 +45,23 @@ int MinI(int arr[], int size)
     }
     return min;
 }
+
 // For finding  minimum value in array using Recursive method
+int MinR(int arr[], int size,int min, int i = 0)
+{
+    if (i == size)
+        return min;
+    else
+    {
+        if (min > arr[i])
+        {
+            min = arr[i];
+            return MinR(arr, size, min,++i);
+        }
+        else
+            return MinR(arr, size,min, ++i );
+    }
+}
 
 // For finding  sum of all values in array using iterative method
 int SumI(int arr[], int size)
@@ -61,15 +75,24 @@ int SumI(int arr[], int size)
 }
 
 // For finding  sum of value in array using Recursive method
+int SumR(int arr[],int s,int i=0,int sum=0){
+    if (i==s)
+        return sum;
+    else{
+        sum+=arr[i];
+        return SumR(arr,s,++i,sum);
+    }
+}
 
 // Binary search  using iteratinve
 int IBinarySearch(int A[], int s, int key)
 {
     int l = 0;
     int h = s - 1;
-    int mid = (l + h) / 2;
+    int mid;
     while (l <= h)
     {
+        mid = (l + h) / 2;
         if (key == A[mid])
             return mid;
         else if (key < A[mid])
@@ -80,17 +103,17 @@ int IBinarySearch(int A[], int s, int key)
     return -1;
 }
 // Binary search using recursive
-int RBinarySearch(int A[], int s, int l, int h, int key)
+int RBinarySearch(int A[], int l, int h, int key)
 {
     if (l <= h)
     {
         int mid = (l + h) / 2;
         if (key == A[mid])
             return mid;
-        else if (key <= A[mid])
-            return RBinarySearch(A, s, l, mid - 1, key);
+        else if (key < A[mid])
+            return RBinarySearch(A, l, mid - 1, key);
         else
-            return RBinarySearch(A, s, l + 1, h, key);
+            return RBinarySearch(A, l + 1, h, key);
     }
     return -1;
 }
@@ -156,11 +179,23 @@ void Reverse(int A[], int size)
         A[j] = temp;
     }
 }
-int main()
-{
-    int Array[9] = {4, 6, 7, 11, 3, 9, 12, 1, 5};
-    int size = sizeof(Array) / sizeof(Array[0]);
-    cout << size;
+int main(){
+    cout<<"Create array ->\n";
+    int size;
+    cout<<"Enter size of array :";
+    cin>>size;
+    int Array[size];
+    for (int i = 0; i < size; i++)
+    {
+        cout<<"Enter value : ";
+        cin>>Array[i];
+    }
+    cout<<"Array's elements are :";
+    for (int i = 0; i < size; i++)
+    {
+        cout<<Array[i]<<" ";
+    }
+    
     cout << endl;
     int choice;
     do
@@ -191,11 +226,12 @@ int main()
             break;
         }
         case 2:{
-            int key;
+            int k;
             cout << "Enter number you want to find :";
-            cin >> key;
-            int i = IBinarySearch(Array, size, key);
-            int j = RBinarySearch(Array, 0, size - 1, key); // here n-1 is last index of array
+            cin >> k;
+            InsertionSort(Array,size);
+            int i = IBinarySearch(Array, size, k);
+            int j = RBinarySearch(Array, 0, size - 1, k); // here n-1 is last index of array
             if (i == -1 && j == -1)
                 cout << "Number number not found !! \n";
             if (i != -1)
@@ -205,33 +241,27 @@ int main()
             break;
         }
         case 3:{
-            cout << "Maximum value of Array(Iterative) =" << MaxI(Array, size) << endl;
-            cout << "Maximum value of Array(Recursive) =" << MaxR(Array, size) << endl;
+            cout << "Maximum value of Array(Iterative) = " << MaxI(Array, size) << endl;
+            cout << "Maximum value of Array(Recursive) = " << MaxR(Array, size,Array[0]) << endl;
             break;
         }
         case 4:{
-            cout << "Minimum value of Array(Iterative) =" << MinI(Array, size) << endl;
-            cout << "Minimum value of Array(Revursive) =" << MinR(Array, size) << endl;
+            cout << "Minimum value of Array(Iterative) = " << MinI(Array, size) << endl;
+            cout << "Minimum value of Array(Recursive) = " << MinR(Array, size,Array[0]) << endl;
             break;
         }
         case 5:{
-            cout << "Sum of values of Array (Iterative) =" << SumI(Array, size) << endl;
-            cout << "Sum of values of Array (Revursive) =" << SumR(Array, size) << endl;
+            cout << "Sum of values of Array (Iterative) = " << SumI(Array, size) << endl;
+            cout << "Sum of values of Array (Recursive) = " << SumR(Array, size) << endl;
             break;
         }
         case 6:{
             InsertionSort(Array, size);
-            cout << "Array after insertion sort"
-                 << "\n";
-            for (int i = 0; i < size; i++)
-            {
-                cout << Array[i] << " ";
-            }
-            cout << endl;
             break;
         }
         case 7:{
             Reverse(Array, size);
+            cout<<"Array after reversing \n";
             for (int i = 0; i < size; i++)
             {
                 cout << Array[i] << " ";
@@ -240,6 +270,7 @@ int main()
             break;
         }
         }
+        cout<<endl;
     } while (0 < choice <= 7);
     return 0;
 }
