@@ -1,8 +1,5 @@
 #include <iostream>
 using namespace std;
-
-////////////////////////////////////////// Incomplete program
-
 int main()
 {
     cout << "Name - Aakash Kumar Jha \n";

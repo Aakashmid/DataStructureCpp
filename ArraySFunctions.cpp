@@ -180,6 +180,7 @@ void Reverse(int A[], int size)
     }
 }
 int main(){
+    cout<<"Name - Aakash Kumar Jha \n";
     cout<<"Create array ->\n";
     int size;
     cout<<"Enter size of array :";
