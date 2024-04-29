@@ -6,20 +6,14 @@ using namespace std;
 int main()
 {
     cout << "Name - Aakash Kumar Jha \n";
-    int matrix1[3][3] = {{1, 1, 1},
-                         {1, 1, 1},
-                         {1, 1, 1}};
-    int matrix2[3][3] = {{1, 1, 1},
-                         {1, 1, 1},
-                         {1, 1, 1}};
-    // int matrix1[3][3] = {{3, 2, 4},
-    //                      {1, 2, 3},
-    //                      {5, 3, 1}};
-    // int matrix2[3][3] = {{1, 5, 4},
-    //                      {7, 3, 8},
-    //                      {1, 3, 2}};
     int r1 = 3, c1 = 3;
     int r2 = 3, c2 = 3;
+    int matrix1[r1][c1] = {{3, 2, 4},
+                         {1, 2, 3},
+                         {5, 3, 1}};
+    int matrix2[r2][c2] = {{1, 5, 4},
+                         {7, 3, 8},
+                         {1, 3, 2}};
     int choice;
     do
     {
@@ -27,6 +21,7 @@ int main()
         cout << "1 for addition of both matrices \n";
         cout << "2 for transpose of both  matrix \n";
         cout << "3 for multiplication of both matrices \n";
+        cout<<"Choose any nuber except above for exit \n";
         cout << "Enter your choice :";
         cin >> choice;
         switch (choice)
@@ -47,7 +42,6 @@ int main()
                     }
                     cout << "\n";
                 }
-                cout << "\n";
             }
             else
             {
@@ -67,7 +61,7 @@ int main()
                 for (int j = 0; j < c1; j++)
                 {
                     Transpose1[j][i] = matrix1[i][j];
-                    // Transpose2[j][i] = matrix2[i][j];
+                    Transpose2[j][i] = matrix2[i][j];
                 }
             }
 
@@ -82,9 +76,17 @@ int main()
                 cout << "\n";
             }
             cout << "\n";
+            cout << "Transpose of matrix2 is -> \n";
+            for (int i = 0; i < c2; i++)
+            {
+                for (int j = 0; j < r2; j++)
+                {
+                    cout << Transpose2[i][j] << " ";
+                }
+                cout << "\n";
+            }
             break;
         }
-
         // for mutliplication of two matrices
         case 3:
         {
@@ -94,22 +96,21 @@ int main()
             }
             else
             {
-                int res[r1][c2]={0}; // resultant matrix
+                int res[r1][c2]; // resultant matrix
                 // multiplying  matrices
+                for (int i = 0; i < r1; ++i)
+                {
+                    for (int j = 0; j < c2; ++j)
+                    {
+                        res[i][j]=0;
+                        for (int k = 0; k < c1; ++k)
+                        {
+                            res[i][j]=res[i][j]+(matrix1[i][k]*matrix2[k][j]);
+                        }
+                    }
+                }
 
-                
-                // for (int i = 0; i < r1; ++i)
-                // {
-                //     for (int j = 0; j < c2; ++j)
-                //     {
-                //         for (int k = 0; k < c2; ++k)
-                //         {
-                //             res[i][j]=res[i][j]+(matrix1[i][k]*matrix2[k][j]);
-                //         }
-                //     }
-                // }
-
-                cout << "Resultant matrix : -> \n";
+                cout << "Resultant matrix after multiplication of matrix1 and matrix2 : -> \n";
                 for (int i = 0; i < r1; i++)
                 {
                     for (int j = 0; j < c2; j++)
@@ -118,7 +119,6 @@ int main()
                     }
                     cout << "\n";
                 }
-                cout << "\n";
             }
             break;
         }
