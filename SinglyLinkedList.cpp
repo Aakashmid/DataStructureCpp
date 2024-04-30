@@ -10,7 +10,6 @@ public:
         value = d;
         next = n;
     }
-    // ~Node();
 };
 
 class SLL
@@ -21,7 +20,16 @@ public:
     {
         head = 0;
     }
-
+    ~SLL()
+    {
+        Node *temp = head;
+        while (head != 0)
+        {
+            head = head->next;
+            delete temp;
+            temp=head;
+        }
+    }
     void addToHead(int x);
     void deletefromHead();
     void insert(int x, int index = -1);
@@ -108,15 +116,17 @@ void SLL::insert(int x, int index)
     }
 }
 
-void SLL::deletefromHead(){
-    if(head==0){
-        cout<<"List is empty !! \n";
+void SLL::deletefromHead()
+{
+    if (head == 0)
+    {
+        cout << "List is empty !! \n";
     }
-    else{
-        Node *p=head;
-        head=head->next;
+    else
+    {
+        Node *p = head;
+        head = head->next;
         delete p;
-        
     }
 }
 void SLL::count()
@@ -132,22 +142,21 @@ void SLL::count()
         while (temp != 0)
         {
             count++;
-            temp=temp->next;  
+            temp = temp->next;
         }
-        cout<<"Total no of elements in array is : "<<count;
+        cout << "Total no of elements in array is : " << count<<endl;
     }
 }
 main()
 
 {
-    cout<<"Name - Aakash Kumar Jha \n";
+    cout << "Name - Aakash Kumar Jha \n";
     SLL mysll;
     mysll.addToHead(4);
     mysll.insert(5);
     mysll.insert(7);    // if postion is not given default is end
     mysll.insert(8, 1); // first argument is value and second is position
     mysll.deletefromHead();
-    
+    mysll.count();
     mysll.display();
-    // mysll.count();
 }
