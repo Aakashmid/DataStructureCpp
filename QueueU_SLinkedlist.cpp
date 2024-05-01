@@ -19,7 +19,6 @@ public:
     node *front;
     Queue()  //constructor
     {
-        cout<<"Aakash Kumar Jha | Roll No. 23PCS5102 \n";
         rear = 0;
         front = 0;
     }

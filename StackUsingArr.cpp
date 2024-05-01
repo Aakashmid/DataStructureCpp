@@ -90,7 +90,7 @@ int main()
     int choice;
     do
     {
-        cout << "Choose operation you want to do \n";
+        cout << "Choose Stack operation you want to do \n";
         cout << "1 for push in stack \n";
         cout << "2 for pop from stack \n";
         cout << "3 for peek  of stack \n";

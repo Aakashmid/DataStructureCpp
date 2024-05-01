@@ -37,6 +37,7 @@ public:
     void count();
     void addtoend(int x);
     void reverse();
+    void Delete(int x);
 };
 void SLL::display()
 {
@@ -47,11 +48,13 @@ void SLL::display()
     else
     {
         Node *p = head;
+        cout<<"Singly linked list elements are : ";
         while (p != 0)
         {
             cout << p->value << " ";
             p = p->next;
         }
+        cout<<endl;
     }
 }
 
@@ -144,19 +147,51 @@ void SLL::count()
             count++;
             temp = temp->next;
         }
-        cout << "Total no of elements in array is : " << count<<endl;
+        cout << "Total no of elements in Singly Linked list is = " << count<<endl;
+    }
+}
+void SLL::reverse(){
+    Node *p=head->next;
+    head->next=0;
+    while (p!=0)
+    {
+       addToHead(p->value);
+       Node *temp=p;
+       p=p->next;
+       delete temp;
+    }
+}
+
+void SLL::Delete(int x){
+    Node *p=head;
+    Node *prev=0;
+    while (p!=0 && p->value!=x)
+    {
+        prev=p;
+        p=p->next;
+    }
+    if(p==0){ cout<<"SLL is empty \n";}
+    else if(p==head){ deletefromHead();}
+    else{
+        prev->next=p->next;
+        delete p;
     }
 }
 main()
-
 {
     cout << "Name - Aakash Kumar Jha \n";
     SLL mysll;
     mysll.addToHead(4);
-    mysll.insert(5);
     mysll.insert(7);    // if postion is not given default is end
-    mysll.insert(8, 1); // first argument is value and second is position
+    mysll.insert(8, 1); // first argument is value and second is position //insert 8 at first position
+    mysll.insert(12,3);
+    mysll.insert(10);
     mysll.deletefromHead();
+    mysll.Delete(7);  //delete 7 if present
     mysll.count();
+    cout<<"Linked list before reversing -> \n";
+    mysll.display();
+    mysll.reverse();
+    cout<<"Linked list after reversing -> \n";
     mysll.display();
 }
