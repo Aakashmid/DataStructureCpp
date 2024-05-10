@@ -15,7 +15,7 @@ int MaxI(int arr[], int size)
     return max;
 }
 
-// For finding  maximum value in array using Recursive method
+// For finding  maximum value in array using Recursive method logic-1
 int MaxR(int arr[], int size, int max , int i = 0)
 {
     if (i == size)
@@ -32,6 +32,19 @@ int MaxR(int arr[], int size, int max , int i = 0)
     }
 }
 
+// recursive function for finding maximum number logic-2
+int MaxR2(int arr[],int index,int max){  //initially index has value of last index of array // max store value of element at last index in array 
+    if (index==-1)
+    {
+        return max;
+    }
+    else{
+        if (arr[index]>max){
+            max=arr[index];
+        }
+        return MaxR2(arr,--index,max);
+    }
+}
 // For finding  minimum value in array using iterative method
 int MinI(int arr[], int size)
 {
@@ -75,12 +88,21 @@ int SumI(int arr[], int size)
 }
 
 // For finding  sum of value in array using Recursive method
-int SumR(int arr[],int s,int i=0,int sum=0){
-    if (i==s)
+// int SumR(int arr[],int s,int i=0,int sum=0){
+//     if (i==s)
+//         return sum;
+//     else{
+//         sum+=arr[i];
+//         return SumR(arr,s,++i,sum);
+//     }
+// }
+
+int SumR(int arr[],int index,int sum=0){
+    if (index==-1)
         return sum;
     else{
-        sum+=arr[i];
-        return SumR(arr,s,++i,sum);
+        sum+=arr[index];
+        return SumR(arr,--index,sum);
     }
 }
 
@@ -244,6 +266,7 @@ int main(){
         case 3:{
             cout << "Maximum value of Array(Iterative) = " << MaxI(Array, size) << endl;
             cout << "Maximum value of Array(Recursive) = " << MaxR(Array, size,Array[0]) << endl;
+            cout << "Maximum value of Array(Recursive2) = " << MaxR2(Array, size-1,Array[size-1]) << endl;
             break;
         }
         case 4:{
@@ -253,7 +276,7 @@ int main(){
         }
         case 5:{
             cout << "Sum of values of Array (Iterative) = " << SumI(Array, size) << endl;
-            cout << "Sum of values of Array (Recursive) = " << SumR(Array, size) << endl;
+            cout << "Sum of values of Array (Recursive) = " << SumR(Array, size-1) << endl;
             break;
         }
         case 6:{
