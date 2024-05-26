@@ -83,10 +83,15 @@ void CQ::deq(){
 	}
 	else
 	{
-		if (front==size-1)
+		if (front==rear)
+		{
+			rear=front=-1;
+		}
+		else if (front==size-1)
 		{
 			front=0;
 		}
+		
 		else{
 			front++;
 		}
